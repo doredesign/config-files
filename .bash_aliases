@@ -9,14 +9,12 @@ alias llast='less `ls -tr1 | tail -1`'
 alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
 alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
 
-
 # Version Control
 alias sdl='git diff master --no-prefix | diff_painter.pl | less -R'
 alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
 alias gst='git status'
 alias viall='vi `git diff --name-only master..HEAD`';
 alias paintless='diff_painter.pl | less -R'
-
 
 # Git
 alias gco='git checkout'
