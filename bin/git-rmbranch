@@ -32,13 +32,21 @@ else
   puts "Proceed?"
   if gets =~ /^y/i
 
-    remote_branches.each do |b|
+    # Remove remote branches
+    remotes = remote_branches.map do |b|
       remote, seperator, branch = b.partition(/\//)
       `git push #{remote} :#{branch}`
+      remote
+    end
+
+    # Remove local tracking branches not on the remote
+    remotes.uniq.each do |remote|
+      `git remote prune #{remote}`
     end
 
     # Remove local branches
     `git branch -d #{local_branches.join(' ')}`
+
   else
     puts "No branches removed."
   end
